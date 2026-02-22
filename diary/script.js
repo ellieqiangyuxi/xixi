@@ -3,10 +3,11 @@ const PIN_KEY     = 'diary_pin';
 const ENTRIES_KEY = 'diary_entries';
 
 /* ── State ── */
-let pinInput     = '';
+let pinInput      = '';
 let confirmingPin = '';
 let pendingPhoto  = null;
 let isUnlocked    = false;
+let currentDetailId = null;
 
 /* ── Elements ── */
 const pinScreen   = document.getElementById('pin-screen');
@@ -14,6 +15,7 @@ const pinLabel    = document.getElementById('pin-label');
 const pinDotsEl   = document.getElementById('pin-dots');
 const dots        = pinDotsEl.querySelectorAll('.dot');
 const journal     = document.getElementById('journal');
+const entryDetail = document.getElementById('entry-detail');
 const entriesList = document.getElementById('entries-list');
 const emptyState  = document.getElementById('empty-state');
 const modal       = document.getElementById('modal');
@@ -173,8 +175,46 @@ function animateCards() {
 function deleteEntry(id) {
   if (!confirm('Delete this entry?')) return;
   saveEntries(getEntries().filter(e => e.id !== Number(id)));
+  if (entryDetail.classList.contains('open')) closeDetail();
   renderEntries();
   setTimeout(animateCards, 20);
+}
+
+/* ════════════════════════════════════
+   DETAIL VIEW
+════════════════════════════════════ */
+
+function openDetail(id) {
+  const entry = getEntries().find(e => e.id === id);
+  if (!entry) return;
+  currentDetailId = id;
+
+  document.getElementById('detail-date').textContent  = entry.date;
+  document.getElementById('detail-title').textContent = entry.title || '';
+  document.getElementById('detail-body').textContent  = entry.body  || '';
+
+  const photoWrap = document.getElementById('detail-photo');
+  const photoImg  = document.getElementById('detail-photo-img');
+  if (entry.photo) {
+    photoImg.src = entry.photo;
+    photoWrap.classList.remove('hidden');
+  } else {
+    photoImg.src = '';
+    photoWrap.classList.add('hidden');
+  }
+
+  // Hide title element if empty
+  document.getElementById('detail-title').style.display = entry.title ? '' : 'none';
+  document.getElementById('detail-body').style.display  = entry.body  ? '' : 'none';
+
+  entryDetail.classList.add('open');
+  // Push state so browser/Android back button works
+  history.pushState({ detail: id }, '');
+}
+
+function closeDetail() {
+  entryDetail.classList.remove('open');
+  currentDetailId = null;
 }
 
 /* ════════════════════════════════════
@@ -300,16 +340,36 @@ document.getElementById('remove-photo').addEventListener('click', () => {
   document.getElementById('photo-input').value = '';
 });
 
-/* Delete via event delegation */
+/* Card click — open detail or delete */
 entriesList.addEventListener('click', e => {
-  const btn = e.target.closest('.delete-btn');
-  if (btn) deleteEntry(btn.dataset.id);
+  const del  = e.target.closest('.delete-btn');
+  if (del) { deleteEntry(Number(del.dataset.id)); return; }
+  const card = e.target.closest('.entry-card');
+  if (card) openDetail(Number(card.dataset.id));
+});
+
+/* Detail view controls */
+document.getElementById('back-btn').addEventListener('click', () => {
+  history.back();
+});
+
+document.getElementById('detail-delete-btn').addEventListener('click', () => {
+  if (currentDetailId) deleteEntry(currentDetailId);
+});
+
+/* Browser / Android back button */
+window.addEventListener('popstate', () => {
+  if (entryDetail.classList.contains('open')) closeDetail();
+  else if (!modal.classList.contains('hidden')) closeModal();
 });
 
 /* Keyboard shortcuts when journal is open */
 document.addEventListener('keydown', e => {
   if (!isUnlocked) return;
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  if (e.key === 'Escape') {
+    if (!modal.classList.contains('hidden')) closeModal();
+    else if (entryDetail.classList.contains('open')) { history.back(); }
+  }
   if ((e.metaKey || e.ctrlKey) && e.key === 'Enter'
       && !modal.classList.contains('hidden')) postEntry();
 });
