@@ -266,6 +266,38 @@ body {
   color: #3d8a3d;
 }
 
+/* ── Diary card ── */
+.card-visual-bg--diary {
+  background:
+    radial-gradient(ellipse at 40% 50%, rgba(201, 169, 110, 0.15) 0%, transparent 65%),
+    linear-gradient(150deg, #1a1410 0%, #221c15 50%, #1a1410 100%);
+}
+
+.card-icon--diary {
+  position: relative;
+  z-index: 1;
+  font-size: 64px;
+  color: var(--gold);
+  opacity: 0.7;
+  filter: drop-shadow(0 4px 20px rgba(201, 169, 110, 0.35));
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.card--diary:hover .card-icon--diary {
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 28px rgba(201, 169, 110, 0.6));
+}
+
+.card--diary:hover {
+  box-shadow:
+    0 22px 56px rgba(26, 20, 10, 0.3),
+    0 6px 18px rgba(201, 169, 110, 0.12);
+}
+
+.card--diary:hover .card-cta {
+  color: var(--gold);
+}
+
 /* ════════════════════════════════════
    FOOTER
 ════════════════════════════════════ */

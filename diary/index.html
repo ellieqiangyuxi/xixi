@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my diary</title>
+  <meta name="theme-color" content="#0d0a09" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── PIN Lock Screen ── -->
+  <div id="pin-screen">
+    <div class="pin-inner">
+      <p class="pin-heading">my diary</p>
+      <p class="pin-label" id="pin-label">enter pin</p>
+      <div class="pin-dots" id="pin-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="keypad" id="keypad">
+        <button class="key" data-digit="1">1</button>
+        <button class="key" data-digit="2">2</button>
+        <button class="key" data-digit="3">3</button>
+        <button class="key" data-digit="4">4</button>
+        <button class="key" data-digit="5">5</button>
+        <button class="key" data-digit="6">6</button>
+        <button class="key" data-digit="7">7</button>
+        <button class="key" data-digit="8">8</button>
+        <button class="key" data-digit="9">9</button>
+        <button class="key key--empty" disabled aria-hidden="true"></button>
+        <button class="key" data-digit="0">0</button>
+        <button class="key key--back" id="key-back" aria-label="Backspace">
+          <svg width="18" height="13" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 1L2 8L8 15M2 8H20"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Journal View ── -->
+  <div id="journal" class="view-hidden">
+    <header class="journal-header">
+      <h1 class="journal-title">my diary</h1>
+      <div class="header-actions">
+        <button class="btn-icon" id="lock-btn" aria-label="Lock diary" title="Lock">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </button>
+        <button class="btn-write" id="new-entry-btn">+ write</button>
+      </div>
+    </header>
+
+    <main class="journal-main">
+      <div id="entries-list"></div>
+      <p id="empty-state" class="empty-state hidden">
+        nothing here yet.<br>write something.
+      </p>
+    </main>
+  </div>
+
+  <!-- ── New Entry Modal ── -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="New entry">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-sheet">
+      <div class="modal-top">
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          id="entry-title"
+          class="entry-title-input"
+          placeholder="Title"
+          maxlength="120"
+          autocomplete="off"
+        />
+        <div class="modal-divider"></div>
+        <textarea
+          id="entry-body"
+          class="entry-body-input"
+          placeholder="What's on your mind…"
+          rows="7"
+        ></textarea>
+        <div id="photo-preview-wrap" class="photo-preview-wrap hidden">
+          <img id="photo-preview" src="" alt="Preview" />
+          <button id="remove-photo" class="remove-photo" aria-label="Remove photo">✕</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <label class="btn-photo" tabindex="0" role="button" aria-label="Add photo">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          photo
+          <input type="file" id="photo-input" accept="image/*" class="file-input" tabindex="-1" />
+        </label>
+        <button class="btn-post" id="post-btn">Post →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
