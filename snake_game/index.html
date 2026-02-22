@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Xixi Snake</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="console">
+        <div class="console-top">
+            <header>
+                <h1>Xixi Snake</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon-light">&#9790;</span>
+                    <span class="theme-icon-dark">&#9728;</span>
+                </button>
+            </header>
+
+            <div id="game-container">
+                <canvas id="game-canvas"></canvas>
+
+                <div id="game-hud" class="game-hud">
+                    <div id="score-display">
+                        Score: <span id="score">0</span>
+                    </div>
+                    <div class="hud-buttons">
+                        <button id="pause-btn" class="hud-btn" aria-label="Pause">&#9646;&#9646;</button>
+                        <button id="menu-btn" class="hud-btn" aria-label="Menu">&#9776;</button>
+                    </div>
+                </div>
+
+                <!-- Start Screen Overlay -->
+                <div id="start-screen" class="overlay">
+                    <div class="overlay-content">
+                        <div class="food-selector">
+                            <p>What would you like to eat?</p>
+                            <div class="food-options">
+                                <label class="food-option">
+                                    <input type="radio" name="food" value="angela" checked>
+                                    <div class="food-card">
+                                        <img src="assets/angela.png" alt="Angela" class="food-preview">
+                                        <span>Angela</span>
+                                    </div>
+                                </label>
+                                <label class="food-option">
+                                    <input type="radio" name="food" value="tangyuan">
+                                    <div class="food-card">
+                                        <img src="assets/tangyuan.png" alt="Tangyuan" class="food-preview">
+                                        <span>Tangyuan</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="speed-selector">
+                            <p>Select Speed:</p>
+                            <div class="speed-options">
+                                <label class="speed-option">
+                                    <input type="radio" name="speed" value="slow">
+                                    <span>Slow</span>
+                                </label>
+                                <label class="speed-option">
+                                    <input type="radio" name="speed" value="normal" checked>
+                                    <span>Normal</span>
+                                </label>
+                                <label class="speed-option">
+                                    <input type="radio" name="speed" value="fast">
+                                    <span>Fast</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button id="start-btn" class="btn">Start Game</button>
+                        <div class="instructions">
+                            <p>Desktop: Arrow keys or WASD</p>
+                            <p>Mobile: Swipe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pause Overlay -->
+                <div id="pause-screen" class="overlay hidden">
+                    <div class="overlay-content">
+                        <h2>Paused</h2>
+                        <div class="overlay-buttons">
+                            <button id="resume-btn" class="btn">Resume</button>
+                            <button id="pause-menu-btn" class="btn btn-secondary">Main Menu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Over Overlay -->
+                <div id="game-over-screen" class="overlay hidden">
+                    <div class="overlay-content">
+                        <h2>Game Over</h2>
+                        <p class="final-score">Score: <span id="final-score">0</span></p>
+                        <div class="overlay-buttons">
+                            <button id="restart-btn" class="btn">Play Again</button>
+                            <button id="gameover-menu-btn" class="btn btn-secondary">Main Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

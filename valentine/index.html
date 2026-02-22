@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ♥</title>
+
+<!-- Link preview meta tags -->
+<meta name="description" content="A Valentine's Day love letter, just for you.">
+<meta property="og:title" content="You Have a Love Letter ♥">
+<meta property="og:description" content="Someone special wrote this just for you. Tap to open.">
+<meta property="og:image" content="family.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You Have a Love Letter ♥">
+<meta name="twitter:description" content="Someone special wrote this just for you. Tap to open.">
+<meta name="twitter:image" content="family.jpg">
+<meta name="theme-color" content="#4a0e1c">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Caveat:wght@400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient"></div>
+
+<div class="petals-container" id="petals"></div>
+
+<div class="scene">
+  <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+    <div class="envelope">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="seal"></div>
+    </div>
+    <div class="open-prompt">tap to open</div>
+  </div>
+</div>
+
+<div class="letter" id="letter">
+  <div class="letter-backdrop" onclick="closeLetter()"></div>
+  <div class="letter-card">
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="flourish tl"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 C5 30 10 15 25 8 C30 6 38 5 55 5" stroke="#c9a96e" stroke-width="0.8" fill="none"/><path d="M5 55 C10 40 18 28 30 20 C36 16 44 13 55 12" stroke="#c9a96e" stroke-width="0.5" fill="none" opacity="0.5"/><circle cx="55" cy="5" r="1.5" fill="#c9a96e" opacity="0.4"/><circle cx="5" cy="55" r="1.5" fill="#c9a96e" opacity="0.4"/></svg></div>
+    <div class="flourish tr"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 C5 30 10 15 25 8 C30 6 38 5 55 5" stroke="#c9a96e" stroke-width="0.8" fill="none"/><path d="M5 55 C10 40 18 28 30 20 C36 16 44 13 55 12" stroke="#c9a96e" stroke-width="0.5" fill="none" opacity="0.5"/><circle cx="55" cy="5" r="1.5" fill="#c9a96e" opacity="0.4"/><circle cx="5" cy="55" r="1.5" fill="#c9a96e" opacity="0.4"/></svg></div>
+    <div class="flourish bl"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 C5 30 10 15 25 8 C30 6 38 5 55 5" stroke="#c9a96e" stroke-width="0.8" fill="none"/><path d="M5 55 C10 40 18 28 30 20 C36 16 44 13 55 12" stroke="#c9a96e" stroke-width="0.5" fill="none" opacity="0.5"/><circle cx="55" cy="5" r="1.5" fill="#c9a96e" opacity="0.4"/><circle cx="5" cy="55" r="1.5" fill="#c9a96e" opacity="0.4"/></svg></div>
+    <div class="flourish br"><svg viewBox="0 0 60 60" fill="none"><path d="M5 55 C5 30 10 15 25 8 C30 6 38 5 55 5" stroke="#c9a96e" stroke-width="0.8" fill="none"/><path d="M5 55 C10 40 18 28 30 20 C36 16 44 13 55 12" stroke="#c9a96e" stroke-width="0.5" fill="none" opacity="0.4"/><circle cx="55" cy="5" r="1.5" fill="#c9a96e" opacity="0.4"/><circle cx="5" cy="55" r="1.5" fill="#c9a96e" opacity="0.4"/></svg></div>
+
+    <div class="letter-date">February 14, 2026</div>
+
+    <div class="letter-greeting">My Dearest Leah</div>
+
+    <div class="letter-divider"></div>
+
+    <div class="letter-body">
+      <span class="line">In a world of billions,</span>
+      <span class="line">你辛苦了</span>
+      <span class="line">You've worked so hard, my love</span>
+      <span class="line">Tu as tellement travaillé dur</span>
+      <span class="line">お疲れ様でした</span>
+      <span class="line">Hai lavorato così tanto</span>
+      <span class="line">Has trabajado tan duro</span>
+    </div>
+
+    <div class="letter-photo">
+      <div class="photo-frame">
+        <img src="family.jpg" alt="Our little family">
+        <div class="photo-caption">Our little family</div>
+      </div>
+    </div>
+
+    <div class="letter-heart">
+      <span class="heart-icon">♥</span>
+    </div>
+
+    <div class="letter-sign">Forever Yours, XiXi's Dad</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

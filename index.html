@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qiangyuxi</title>
+  <meta name="description" content="A small collection of things made with love, dedicated to XiXi." />
+  <meta property="og:title" content="qiangyuxi" />
+  <meta property="og:description" content="A small collection of things made with love." />
+  <meta property="og:url" content="https://qiangyuxi.com" />
+  <meta name="theme-color" content="#0e0b0a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ── Hero ── -->
+  <section class="hero" aria-label="Hero">
+    <div
+      class="hero-bg"
+      style="background-image: url('xixi.jpg');"
+      role="img"
+      aria-label="XiXi, smiling joyfully"
+    ></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-name">qiangyuxi</h1>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-subtitle">dedicated to XiXi</p>
+    </div>
+
+    <button class="scroll-indicator" aria-label="Scroll to projects" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section class="projects" id="projects" aria-label="Projects">
+    <div class="projects-inner">
+      <p class="section-label">things i made with love</p>
+
+      <div class="cards-grid">
+
+        <!-- Valentine -->
+        <a href="./valentine/" class="card card--valentine" aria-label="Open Valentine project">
+          <div class="card-visual">
+            <div class="card-visual-bg"></div>
+            <span class="card-icon" aria-hidden="true">♥</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">A Love Letter</h2>
+            <p class="card-desc">An interactive valentine card — tap to open the envelope</p>
+            <div class="card-footer">
+              <div class="card-tags">
+                <span>html</span><span>css</span><span>js</span>
+              </div>
+              <span class="card-cta" aria-hidden="true">Open →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Snake Game -->
+        <a href="./snake_game/" class="card card--snake" aria-label="Play Xixi Snake game">
+          <div class="card-visual">
+            <div class="card-visual-bg card-visual-bg--snake"></div>
+            <img
+              src="./snake_game/assets/snake-head.png"
+              alt=""
+              class="card-sprite"
+              aria-hidden="true"
+            />
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">Xixi Snake</h2>
+            <p class="card-desc">A playful snake game with custom pixel sprites</p>
+            <div class="card-footer">
+              <div class="card-tags">
+                <span>canvas</span><span>js</span><span>game</span>
+              </div>
+              <span class="card-cta" aria-hidden="true">Play →</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p class="footer-text">
+      made with love
+      <span class="footer-dot" aria-hidden="true">·</span>
+      qiangyuxi.com
+      <span class="footer-dot" aria-hidden="true">·</span>
+      <a href="https://github.com/ellieqiangyuxi" class="footer-link" target="_blank" rel="noopener noreferrer">github</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
